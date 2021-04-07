@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Final Design Page</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Design</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.0.4/jscolor.min.js"></script>
+  <script src="https://kit.fontawesome.com/627e09cffe.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  
+  <div class="header">
+    <!-- <a href="../index.html"><i id="backbutton" class="fas fa-times"></i></a> -->
+    <!-- <input id="designName" placeholder="ENTER TITLE OF DESIGN" type="text" name="fname" autocomplete="off"><br> -->
+  </div>
+ 
+  <div class="main" >
+    <div class="right" id="panel">
+
+      <!-- not working -->
+      <button onclick="undo()"><i id="change2" class="fas fa-undo"></i></button>
+      <button onclick="redo()"><i id="change2" class="fas fa-redo"></i></button>
+
+
+      <div class="color">
+        COLOR: <br><input style="width:100px;" class="jscolor {width:243, height:150, position:'right',
+      borderColor:'#FFF', insetColor:'#FFF', backgroundColor:'#FFF'}" id="bgcolor" name="bgcolor" value="ffffff" /><br>
+      </div>
+
+
+      <div class="texture">
+        TEXTURE:<br>
+        <button id="txtbut" onclick="changeTexture('plain')">None</button>
+        <button id="txtbut" onclick="changeTexture('fabric')">Fabric</button>
+        <button id="txtbut" onclick="changeTexture('waves')">Waves</button>
+        <button id="txtbut" onclick="changeTexture('spotty')">Bubbles</button>
+      </div>
+
+
+      <a href="./upload.html" onclick="clearBGColor()">
+        <div id="upload">Upload Element</div>
+      </a>
+
+    </div>
+
+    <div class="left" id="panel">
+
+      <div class="left1" id="info">
+        
+        <button style="color: white; font-size: medium;" id="leftButton1" onclick="changeShape('neck')">CHANGE NECKLINE</button>
+      </div>
+
+      <div class="left2" id="info">
+       
+        <button style="color: white; font-size: medium;"id="leftButton2" onclick="changeShape('sleeve')">CHANGE SLEEVE</button>
+      </div>
+
+      <div class="left3" id="info">
+        
+        <button style="color: white; font-size: medium;"id="leftButton3" onclick="changeShape('waist')">CHANGE WAIST</button>
+      </div>
+
+    </div>
+
+
+
+    <div class="content">
+      <div id="background" class="background">
+        <img id="userUpload"
+          src="https://www.sciencealert.com/images/2019-12/processed/CatsHaveFacialExpressionsButHardToRead_600.jpg" />
+        <img id="design" src="./images/original.png">
+      </div>
+
+      <!-- not working -->
+      <div class="contentbase">
+        <button id="flipButton" onclick="flipDesign()"><i id="change2" class="fas fa-caret-left"></i></button></button>
+        <p1 id="flipped">FLIP</p1>
+        <button id="flipButton" onclick="flipDesign()"><i id="change2" class="fas fa-caret-right"></i></button>
+          </button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <button id="footerButton" onclick="save()"><i id="footerIcon" class="far fa-save"></i></button>
+
+    <button id="shareButton"><i id="footerIcon" class="fas fa-share-alt"></i></button>
+
+    <!-- The Modal --->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1 align="center" style="color:#32cd32">Share Your Design:</h1>
+        <div class="SMButtonGroup" id="SMButtonGroup" align="center">
+          <button><i id="linkedinIcon" class="fab fa-linkedin" onclick="changeColor('linkedinIcon')"></i></button>
+          <button><i id="facebookIcon" class="fab fa-facebook-square"
+              onclick="changeColor('facebookIcon')"></i></button>
+          <button><i id="instagramIcon" class="fab fa-instagram" onclick="changeColor('instagramIcon')"></i></button>
+          <button><i id="pinterestIcon" class="fab fa-pinterest-square"
+              onclick="changeColor('pinterestIcon')"></i></button>
+        </div>
+        <br>
+        <br>
+        <form align="center">
+          Enter Your Message:<br> <br>
+          <textarea id="shareMessageBox" type="text" size="60" style="height:100px"></textarea>
+        </form>
+        <button id="submitMessage" align="center" onclick="sendMessageIndicator()">Submit</button>
+      </div>
+    </div>
+
+    <button id="footerButton" onclick="tutorial()"><i id="footerIcon" class="far fa-question-circle"></i></button>
+  </div>
+
+
+
+  
+
+
+
+  <div class="page-wrapper chiller-theme toggled">
+    <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+      <i class="fas fa-bars"></i>
+    </a>
+    <nav id="sidebar" class="sidebar-wrapper">
+      <div class="sidebar-content">
+        <div class="sidebar-brand">
+          <a href="#">clotings</a>
+          <div id="close-sidebar">
+            <i class="fas fa-times"></i>
+          </div>
+        </div>
+        <div class="sidebar-header">
+          <div class="user-pic">
+            <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg" alt="User picture">
+          </div>
+          <div class="user-info">
+            <span class="user-name">Jhon
+              <strong>Smith</strong>
+            </span>
+            <span class="user-role">Mobile no</span>
+            <span class="user-status">
+              <span>Address</span>
+            </span>
+          </div>
+        </div>
+        <!-- sidebar-header  -->
+        <!-- <div class="sidebar-search">
+          <div>
+            <div class="input-group">
+              <input type="text" class="form-control search-menu" placeholder="Search...">
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <!-- sidebar-search  -->
+        <div class="sidebar-menu">
+          <ul>
+            <li class="header-menu">
+              <span>General</span>
+            </li>
+            <li class="sidebar-dropdown">
+              <a href="../tshirt/index.html">
+                <i class="fa fa-tachometer-alt"></i>
+                <span>T-Shirt</span>
+                <!-- <span class="badge badge-pill badge-warning"></span> -->
+              </a>
+              <!-- <div class="sidebar-submenu">
+                <ul>
+                  <li>
+                    <a href="#">Dashboard 1
+                      <span class="badge badge-pill badge-success"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">Dashboard 2</a>
+                  </li>
+                  <li>
+                    <a href="#">Dashboard 3</a>
+                  </li>
+                </ul>
+              </div> -->
+            </li>
+            <li class="sidebar-dropdown">
+              <a href="../skirt/index.html">
+                <i class="fa fa-shopping-cart"></i>
+                <span>Skirt</span>
+                <span class="badge badge-pill badge-danger"></span>
+              </a>
+              <!-- <div class="sidebar-submenu">
+                <ul>
+                  <li>
+                    <a href="#">Products
+  
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">Orders</a>
+                  </li>
+                  <li>
+                    <a href="#">Credit cart</a>
+                  </li>
+                </ul>
+              </div> -->
+            </li>
+            <li class="sidebar-dropdown">
+              <a href="../suit/index.html">
+                <i class="far fa-gem"></i>
+                <span>Suit</span>
+              </a>
+              <!-- <div class="sidebar-submenu">
+                <ul>
+                  <li>
+                    <a href="#">General</a>
+                  </li>
+                  <li>
+                    <a href="#">Panels</a>
+                  </li>
+                  <li>
+                    <a href="#">Tables</a>
+                  </li>
+                  <li>
+                    <a href="#">Icons</a>
+                  </li>
+                  <li>
+                    <a href="#">Forms</a>
+                  </li>
+                </ul>
+              </div> -->
+            </li>
+            <li class="sidebar-dropdown">
+              <a href="../cut sleeve top/index.html">
+                <i class="fa fa-chart-line"></i>
+                <span>Cut Sleeve Top</span>
+              </a>
+              <!-- <div class="sidebar-submenu">
+                <ul>
+                  <li>
+                    <a href="#">Pie chart</a>
+                  </li>
+                  <li>
+                    <a href="#">Line chart</a>
+                  </li>
+                  <li>
+                    <a href="#">Bar chart</a>
+                  </li>
+                  <li>
+                    <a href="#">Histogram</a>
+                  </li>
+                </ul>
+              </div> -->
+            </li>
+            <li class="sidebar-dropdown">
+              <a href="../top/index.html">
+                <i class="fa fa-globe"></i>
+                <span>Top</span>
+              </a>
+              <!-- <div class="sidebar-submenu">
+                <ul>
+                  <li>
+                    <a href="#">Google maps</a>
+                  </li>
+                  <li>
+                    <a href="#">Open street map</a>
+                  </li>
+                </ul>
+              </div> -->
+            </li>
+            <li class="sidebar-dropdown">
+              <a href="../middy/index.html">
+                <i class="fa fa-globe"></i>
+                <span>Middy</span>
+              </a>
+              <!-- <div class="sidebar-submenu">
+                <ul>
+                  <li>
+                    <a href="#">Google maps</a>
+                  </li>
+                  <li>
+                    <a href="#">Open street map</a>
+                  </li>
+                </ul>
+              </div> -->
+            </li>
+            <li class="sidebar-dropdown">
+              <a href="../frock/index.html">
+                <i class="fa fa-globe"></i>
+                <span>Frock</span>
+              </a>
+              <!-- <div class="sidebar-submenu">
+                <ul>
+                  <li>
+                    <a href="#">Google maps</a>
+                  </li>
+                  <li>
+                    <a href="#">Open street map</a>
+                  </li>
+                </ul>
+              </div> -->
+            </li>
+            <li class="sidebar-dropdown">
+              <a href="../dress/index.html">
+                <i class="fa fa-globe"></i>
+                <span>Dress</span>
+              </a>
+              <!-- <div class="sidebar-submenu">
+                <ul>
+                  <li>
+                    <a href="#">Google maps</a>
+                  </li>
+                  <li>
+                    <a href="#">Open street map</a>
+                  </li>
+                </ul>
+              </div> -->
+            </li>
+            <!-- <li class="header-menu">
+              <span>Extra</span>
+            </li>
+            <li>
+              <a href="../frock/index.html">
+                <i class="fa fa-book"></i>
+                <span>Frock</span>
+                <span class="badge badge-pill badge-primary"></span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-calendar"></i>
+                <span>Calendar</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-folder"></i>
+                <span>Examples</span>
+              </a>
+            </li> -->
+          </ul>
+        </div>
+        <!-- sidebar-menu  -->
+      </div>
+      <!-- sidebar-content  -->
+      <!-- <div class="sidebar-footer">
+        <a href="#">
+          <i class="fa fa-bell"></i>
+          <span class="badge badge-pill badge-warning notification">3</span>
+        </a>
+        <a href="#">
+          <i class="fa fa-envelope"></i>
+          <span class="badge badge-pill badge-success notification">7</span>
+        </a>
+        <a href="#">
+          <i class="fa fa-cog"></i>
+          <span class="badge-sonar"></span>
+        </a>
+        <a href="#">
+          <i class="fa fa-power-off"></i>
+        </a>
+      </div>
+    </nav>
+    
+      </div>
+   -->
+    </main>
+    <!-- page-content" -->
+  </div>
+  <!-- page-wrapper -->
+
+  <script src="scripts/script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="styles/upload.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.2.9/interact.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
+</head>
+
+<body>
+  <form>
+    <input type="file" accept="image/*" onChange="showImage(this)">
+    <img id="pic" src="">
+    <button id="selectPicOkay" onclick="transferStoredPhoto()">
+      <a href="./index.html">
+        Okay
+      </a>
+    </button>
+  </form>
+
+  <!--http://www.danielmayor.com/take-photo-with-html5-javascript-->
+   <div class="camera">
+    <video id="video">Video stream not available.</video>
+    <button id="startbutton">Take photo</button>
+  </div>
+
+   <canvas id="canvas">
+   </canvas>
+   <div class="output">
+     <img id="photo" alt="The screen capture will appear in this box.">
+     <button id="takePhotoOkay" onclick="transferTakenPhoto()">
+       <a href="./index.html">
+         Okay
+       </a>
+     </button>
+   </div>
+
+   <img id="returnImage", src='', style="display: none;" />
+
+   <script src="scripts/script.js"></script>
+
+</body>
+</html>
